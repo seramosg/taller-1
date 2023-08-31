@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Category;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return json_encode($categories);
     }
 
     /**
@@ -21,10 +23,7 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +33,9 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category =  new Category();
+        $category -> name = $request -> name;
+        $category -> save();
     }
 
     /**
@@ -45,7 +46,8 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+        return ($category);
     }
 
     /**
