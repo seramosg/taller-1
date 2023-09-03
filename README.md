@@ -5,4 +5,4 @@ Taller calificable para la clase del 31/08/2023
 * Tomas Jimenez Alvarez
 * Jersson Gonzalez Cortes
 * Sergio Alejandro Ramos Grajales
-* David Espitia
+* David Espitias
