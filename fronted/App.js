@@ -4,8 +4,10 @@ import { StyleSheet, Text, View, Button, Image, TextInput, FlatList, useState } 
 export default function App() {
   return (
     <View style={styles.container}>
+      {/* Para poner texto es con Text */}
       <Text style={styles.titulo}>TALLER CALIFICABLE 1</Text>
       <Text style={styles.letra}>5 razones para ver la asignatura:</Text>
+      {/* Para crear una lista de cosas */}
       <FlatList
         data={[
           {key: 'Conocimientos nuevos'},
@@ -14,6 +16,7 @@ export default function App() {
           {key: 'Demasiado aprendizaje'},
           {key: 'El profe es el mejor'},
         ]}
+        // Para renderizar el item creado
         renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
       />
       <TextInput placeholder='Ingrese su cédula: ' style={styles.input} />
