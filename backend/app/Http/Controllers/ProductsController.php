@@ -69,8 +69,28 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        // Valida los datos del formulario
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'category_id' => 'required|exists:categories,id',
+            // Agrega aquí las reglas de validación para otros campos que desees validar
+        ]);
 
+        // Encuentra el producto que deseas actualizar
+        $product = Product::findOrFail($id);
+
+        // Actualiza los campos con los datos del formulario
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->category_id = $request->input('category_id');
+        // Actualiza otros campos según sea necesario
+
+        // Guarda los cambios en la base de datos
+        $product->save();
+
+        // Redirecciona a la página o ruta que desees después de la actualización
+        return redirect()->route('productos.index')->with('success', 'El producto ha sido actualizado correctamente');
     }
 
     /**
@@ -81,6 +101,13 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Encuentra el producto que deseas eliminar
+        $product = Product::findOrFail($id);
+
+        // Elimina el producto de la base de datos
+        $product->delete();
+
+        // Redirecciona a la página o ruta que desees después de la eliminación
+        return redirect()->route('productos.index')->with('success', 'El producto ha sido eliminado correctamente');
     }
 }
