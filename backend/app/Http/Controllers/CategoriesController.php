@@ -70,7 +70,23 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Valida los datos del formulario
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        //Encuentra la categoría por su ID
+        $category = Category::find($id);
+
+        if (!$category) {
+            return response()->json(['message' => 'Categoría no encontrada'], 404);
+        }
+
+        //Actualiza los datos de la categoría
+        $category->name = $request->input('name');
+        $category->save();
+
+        return response()->json(['message' => 'Categoría actualizada con éxito'], 200);
     }
 
     /**
@@ -81,6 +97,16 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Encuentra la categoría por su ID
+        $category = Category::find($id);
+
+        if (!$category) {
+            return response()->json(['message' => 'Categoría no encontrada'], 404);
+        }
+
+        // Elimina la categoría
+        $category->delete();
+
+        return response()->json(['message' => 'Categoría eliminada con éxito'], 200);
     }
 }

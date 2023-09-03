@@ -9,7 +9,7 @@ class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * Para ver todo
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -26,7 +26,7 @@ class ProductsController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * Para crear un campo de la tabla
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -39,7 +39,7 @@ class ProductsController extends Controller
 
     /**
      * Display the specified resource.
-     *
+     * Para ver un solo campo de la tabla
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -62,7 +62,7 @@ class ProductsController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * Para actualizar un campo de la tabla
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
