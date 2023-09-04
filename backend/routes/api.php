@@ -20,15 +20,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Ruta para obtener toda la tabla del servidor
 Route::get('/categories', [CategoriesController::class, 'index']);
+//Ruta para enviar una categoría al servidor
 Route::post('/categories', [CategoriesController::class, 'store']);
+//Ruta para obtener una categoría del servidor
 Route::get('/categories/{id}', [CategoriesController::class, 'show']);
+//Ruta para borrar una categoría del servidor
 Route::delete('/categories/{id}', [CategoriesController::class, 'destroy']);
-Route::update('/categories/{id}', [CategoriesController::class, 'update']);
+//Ruta para actualizar el nombre de una categoría del servidor
+Route::put('/categories/{id}', [CategoriesController::class, 'update']);
 
 
 Route::get('/products', [ProductsController::class, 'index']);
 Route::post('/products', [ProductsController::class, 'store']);
 Route::get('/products/{id}', [ProductsController::class, 'show']);
 Route::delete('/products/{id}', [ProductsController::class, 'destroy']);
-Route::update('/products/{id}', [ProductsController::class, 'update']);
+Route::put('/products/{id}', [ProductsController::class, 'update']);
